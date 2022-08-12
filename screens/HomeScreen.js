@@ -4,6 +4,7 @@ import CustomListItem from "../components/CustomListItem";
 import { auth, db } from "../firebase/firebase-config";
 import { CameraIcon, PencilIcon } from "react-native-heroicons/outline";
 import { collection, getDocs } from "firebase/firestore";
+import { doc, onSnapshot } from "firebase/firestore";
 
 const HomeScreen = ({ navigation }) => {
   useLayoutEffect(() => {
@@ -65,27 +66,22 @@ const HomeScreen = ({ navigation }) => {
 
   const [chats, setChats] = useState();
 
-  useEffect(() => {
-    let isMounted = true;
+  useLayoutEffect(() => {
     const getData = async () => {
-      await getDocs(collection(db, "chats")).then((querySnapshot) => {
+      await getDocs(collection(db, "chat")).then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
-          // set all chats to state
-          isMounted &&
-            setChats((prevState) => ({
-              ...prevState,
-              [doc.id]: doc.data(),
-            }));
+          setChats((prevState) => ({
+            ...prevState,
+            [doc.id]: doc.data(),
+          }));
         });
       });
     };
     getData();
     return () => {
-      isMounted = true;
-      getData();
+      getData;
     };
   }, []);
-  console.log(chats);
   return (
     <ScrollView>
       {chats

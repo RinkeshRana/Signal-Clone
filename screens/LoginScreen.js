@@ -28,7 +28,6 @@ const LoginScreen = ({ navigation }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        const uid = user.uid;
         navigation.replace("Home");
       }
     });
@@ -73,7 +72,7 @@ const LoginScreen = ({ navigation }) => {
         </TouchableOpacity>
 
         <TouchableOpacity
-          className="border-2 border-blue-500 shadow-lg w-1/3 text-white rounded-md "
+          className="border-2 border-blue-500 shadow-sm w-1/3 text-white rounded-md "
           onPress={() => {
             navigation.navigate("Register");
           }}

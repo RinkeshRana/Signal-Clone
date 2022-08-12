@@ -81,7 +81,7 @@ const RegisterScreen = ({ navigation }) => {
           </TouchableOpacity>
 
           <TouchableOpacity
-            className=" border-2 border-blue-500 shadow-lg w-1/3 rounded-md "
+            className=" border-2 border-blue-500 shadow-sm w-1/3 rounded-md "
             onPress={() => {
               navigation.navigate("Login");
             }}

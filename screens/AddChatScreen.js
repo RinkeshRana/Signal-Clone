@@ -15,11 +15,11 @@ const AddChatScreen = ({ navigation }) => {
   const [input, setInput] = useState("");
 
   const createChat = async () => {
-    await addDoc(collection(db, "chats"), {
+    await addDoc(collection(db, "chat"), {
       ChatName: input,
     })
       .then(() => {
-        navigation.navigate("Home");
+        navigation.replace("Home");
       })
       .catch((error) => {
         console.log(error);

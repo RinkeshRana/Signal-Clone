@@ -3,7 +3,12 @@ import React from "react";
 
 const CustomListItem = ({ id, chatName, enterChat }) => {
   return (
-    <TouchableOpacity>
+    <TouchableOpacity
+      className="border-b border-gray-200"
+      onPress={() => {
+        enterChat(id, chatName);
+      }}
+    >
       <View className="bg-white flex-row items-center p-2 space-x-3">
         <Image
           className="h-10 w-10 rounded-full"
